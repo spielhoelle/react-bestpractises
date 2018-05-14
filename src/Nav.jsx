@@ -6,7 +6,7 @@ import NavContainer from './NavContainer.jsx';
 export default function Nav(props) {
   return (
     <div>
-      <NavContainer theme={props.theme}/>
+      <NavContainer/>
     </div>
   )
 };

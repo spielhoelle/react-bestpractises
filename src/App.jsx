@@ -5,7 +5,7 @@ import SearchBar from './SearchBar.jsx';
 import Nav from './Nav.jsx';
 import CreatePost from './CreatePost.jsx';
 
-const theme = "dark"
+export const ThemeContext = React.createContext();
 
 //TODO remove those inline styles and replace by two different themes. Checkout the Nav how the theme is passed down.
 // https://material.io/tools/color/#!/?view.left=0&view.right=0
@@ -130,7 +130,9 @@ class App extends React.Component {
 
     return (
       <div>
-        <Nav theme={theme}/>
+        <ThemeContext.Provider value="dark">
+           <Nav/>
+        </ThemeContext.Provider>
         <div className="container" >
           <div className="my-3 card">
             <CreatePost
