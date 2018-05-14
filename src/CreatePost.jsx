@@ -9,16 +9,18 @@ const styles = {
   },
   nomargin: {
     margin: 0
+  },
+  fullwidth: {
+    width: "100%"
   }
 }
-// TODO this could be turned into a functional component
-// https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc
+
 export default class Post extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      preview: localStorage.getItem('preview') || ""
+      preview: JSON.parse(localStorage.getItem('preview')) || ""
     }
   }
   componentDidMount = () =>{
@@ -27,10 +29,17 @@ export default class Post extends React.Component {
     }
   }
   handleChange(event) {
-    event.preventDefault();
-
-    //handle file select and show a preview of the current selected image
     //https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+    event.preventDefault();
+    console.log(this.fileInput.files[0]);
+
+    //This creates a base64 encoded version of the image, displayes it and saves it in the LC
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.querySelector('#image').src = e.target.result
+      localStorage.setItem('preview', JSON.stringify(e.target.result))
+    }
+    reader.readAsDataURL(this.fileInput.files[0]);
 
   }
 
@@ -62,7 +71,7 @@ export default class Post extends React.Component {
               this.fileInput = input;
             }}
           />
-          <img src={this.state.preview} id="image"/>
+          <img style={styles.fullwidth} src={this.state.preview} id="image"/>
 
         </form>
     )
