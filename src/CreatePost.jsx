@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const styles = {
   flexed: {
@@ -15,20 +16,16 @@ const styles = {
   }
 }
 
-export default class Post extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {
-      preview: JSON.parse(localStorage.getItem('preview')) || ""
-    }
+export default class CreatePost extends React.Component {
+  state = {
+    preview: JSON.parse(localStorage.getItem('preview')) || ""
   }
   componentDidMount = () =>{
     if (localStorage.getItem('preview') !== undefined){
       this.state
     }
   }
-  handleChange(event) {
+  handleChange = (event) => {
     //https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
     event.preventDefault();
     console.log(this.fileInput.files[0]);
@@ -76,4 +73,9 @@ export default class Post extends React.Component {
         </form>
     )
   }
+};
+CreatePost.propTypes = {
+  form: PropTypes.object,
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func
 };

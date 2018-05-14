@@ -43,6 +43,7 @@ export default function Post(props) {
 // TODO those proptypes should be checked correctly
 // https://reactjs.org/docs/typechecking-with-proptypes.html
 Post.propTypes = {
-  editing: PropTypes.array,
-  handleCancel: PropTypes.bool
+  editing: PropTypes.object,
+  handleCancel: PropTypes.func,
+  post: PropTypes.object.isRequired
 };
