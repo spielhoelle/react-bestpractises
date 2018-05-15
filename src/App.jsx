@@ -129,7 +129,7 @@ class App extends React.Component {
                 </ul>)
 
     return (
-      <div>
+      <React.Fragment>
         <ThemeContext.Provider value="dark">
            <Nav/>
         </ThemeContext.Provider>
@@ -149,7 +149,7 @@ class App extends React.Component {
             {posts.length > 0 ? posttemplate : <div className="card-content">Nothing found</div> }
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

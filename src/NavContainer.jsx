@@ -6,7 +6,7 @@ import DesktopNav from './DesktopNav.jsx';
 //Replace with context https://reactjs.org/docs/context.html
 export default function NavContainer(props) {
   return (
-    <div>
+    <React.Fragment>
       <nav>
         <div className="nav-wrapper">
           <a href="#!" className="brand-logo">Logo</a>
@@ -17,6 +17,6 @@ export default function NavContainer(props) {
           <SideBar/>
         </div>
       </nav>
-    </div>
+    </React.Fragment>
   )
 };
